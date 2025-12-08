@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    networks:
+      - monitor
+
+  apache:
+    build: ./apache
+    container_name: apache
+    ports:
+      - "8081:80"
+    networks:
+      - monitor
+
+  nodejs:
+    build: ./nodejs
+    container_name: nodejs
+    ports:
+      - "3000:3000"
+    networks:
+      - monitor
+
+  python:
+    build: ./python
+    container_name: python
+    ports:
+      - "5000:5000"
+    networks:
+      - monitor
+
+  php:
+    build: ./php
+    container_name: php
+    ports:
+      - "8082:80"
+    networks:
+      - monitor
+
+networks:
+  monitor:
+    driver: bridge
